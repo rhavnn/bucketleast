@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --logo-size: 1.5rem;
+  --content-size: 0.5rem;
+  --black: rgb(11, 3, 6);
+  --red: rgb(234, 1, 6);
+  --overgray: rgb(87, 99, 97);
+  --undergray: rgb(187, 205, 188);
+  --hovergray: rgb(227, 248, 228);
+}
+
+body {
+  background-color: var(--overgray);
+}
+
+.nav-bar {
+  display: flex;
+  background-color: var(--black);
+}
+.nav-bar #logo {
+  margin-left: 2vw;
+  font-size: var(--logo-size);
+  color: var(--undergray);
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 20px;
+  margin-top: 0;
+}
+
+/* Status Columns */
+
+/* Parent Workspace Container */
+.column-workspace {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* Status Columns using CSS Grid */
+.status-column {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'name counter'
+    'button button';
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--undergray);
+  color: var(--black);
+  border-radius: 8px;
+  flex: 1 1 270px;
+  align-items: center;
+}
+
+.status-column .column-name {
+  grid-area: name;
+  margin: 0;
+}
+
+.status-column .column-task-count {
+  grid-area: counter;
+  margin: 0;
+  justify-self: end;
+}
+
+.status-column .new-task-button {
+  grid-area: button;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.status-column .new-task-button:hover {
+  background-color: var(--hovergray);
+}
+
+.column-workspace {
+  display: grid;
+  grid-template-areas: 'name', 'counter', 'button', 'tasks';
+  gap: px;
+  padding: 2rem;
+}
+.status-column {
+  display: flex; /* Changed from inherit */
+  flex-direction: row; /* Aligns children horizontally */
+  flex-wrap: wrap; /* Allows children to wrap if needed */
+  align-items: center;
+  flex: 1 1 270px; /* Allows columns to grow and shrink properly */
+  background-color: var(--undergray);
+  color: var(--black);
+  border-radius: 8px;
+}
+
+.status-column .column-name {
+  margin: 20px 0 20px 20px;
+}
+.status-column .column-task-count {
+  margin: 0 1.5rem 0;
+}
+.status-column .new-task-button {
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  margin-left: 2rem;
+}
+.status-column .new-task-button:hover {
+  background-color: var(--hovergray);
+}
