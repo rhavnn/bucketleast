@@ -1,15 +1,17 @@
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
 :root {
   --logo-size: 1.5rem;
   --content-size: 0.5rem;
-  --black: rgb(11, 3, 6);
+  --black: rgb(18, 18, 24);
   --red: rgb(234, 1, 6);
-  --overgray: rgb(87, 99, 97);
+  --overgray: rgb(100, 98, 122);
   --undergray: rgb(187, 205, 188);
-  --hovergray: rgb(227, 248, 228);
+  --hovergray: rgb(181, 181, 207);
 }
 
 body {
@@ -21,12 +23,14 @@ body {
 
 .nav-bar {
   display: flex;
+  width: 100%;
+  height: 10vh;
   background-color: var(--black);
   margin: 0;
   padding: 1rem;
 }
 .nav-bar #logo {
-  margin-left: 2vw;
+  margin: 1rem 1rem 0 0;
   font-size: var(--logo-size);
   color: white;
 }
@@ -42,39 +46,40 @@ ul {
 .column-workspace {
   display: flex;
   flex-wrap: wrap;
-  padding: 2rem;
+  padding: 1rem;
+  gap: 1rem;
+  margin: 0 4vw;
 }
 
 .status-column {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr auto auto;
   grid-template-rows: auto auto;
   grid-template-areas:
     'name counter button'
     'container container container';
-  row-gap: 0;
-  padding: 1.5rem;
+  padding: clamp(0.4rem, 2vw, 1.5rem) clamp(0.4rem, 2vw, 2rem) clamp(0.4rem, 2vw, 2rem);
   background-color: var(--black);
   color: white;
   border-radius: 8px;
-  flex: 1 1 270px;
   align-items: center;
+  width: 100%;
+  flex: 1 1;
 }
 .status-column .column-name {
   grid-area: name;
-  margin: 0;
   text-align: left;
+  font-size: clamp(0.6rem, 2vw, 20px);
 }
 .status-column .column-task-count {
   grid-area: counter;
-  margin: 0;
-  gap: 0;
+  padding: 0 clamp(0.4rem, 1vw, 1rem);
+  font-size: clamp(0.4rem, 2vw, 16px);
 }
 .status-column .new-task-button {
   grid-area: button;
-  margin: 0 0 0 8rem;
   justify-self: right;
-  padding: 16px;
+  padding: clamp(0.8rem, 1vw, 16px) clamp(1rem, 1vw, 20px);
   border: none;
   border-radius: 8px;
   background-color: transparent;
@@ -83,13 +88,13 @@ ul {
 }
 .column-task-container {
   grid-area: container;
-  margin: 0;
   padding: 1rem 0 0 0;
+  width: 100%;
+  font-size: clamp(0.4rem, 2vw, 1rem);
 }
 .column-task-child {
   text-align: left;
   background-color: var(--overgray);
-  width: 16vh;
   padding: 1rem;
   margin: 0;
   border-radius: 8px;
@@ -98,4 +103,57 @@ ul {
 .status-column .new-task-button:hover {
   background-color: var(--hovergray);
   color: var(--black);
+}
+
+/*
+- Mainly aiming to avoid line spacings/next lines
+- Accentuates most suitable responsive layout
+*/
+@media screen and (max-width: 1700px) {
+  .column-workspace {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 4rem;
+  }
+}
+@media screen and (max-width: 1325px) {
+  .column-workspace {
+    margin: 0 4rem;
+  }
+}
+@media screen and (max-width: 1060px) {
+  .column-workspace {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 0;
+  }
+  .status-column {
+    padding:
+      clamp(0.4rem, 5vw, 1rem)
+      clamp(0.4rem, 5vw, 1.5rem)
+      clamp(0.4rem, 5vw, 1.5rem);
+  }
+  .status-column .column-name {
+    font-size: clamp(0.4rem, 5vw, 1rem);
+  }
+}
+@media screen and (max-width: 530px) {
+  .column-workspace {
+    grid-template-columns: 1fr;
+  }
+  .status-column {
+    padding:
+      clamp(0.4rem, 4vw, 1.5rem)
+      clamp(0.4rem, 4vw, 2rem)
+      clamp(0.4rem, 4vw, 2rem);
+  }
+  .status-column .column-name {
+    font-size: clamp(0.6rem, 4vw, 1rem);
+  }
+  .status-column .column-task-count {
+    font-size: clamp(0.4rem, 4vw, 1rem);
+  }
+  .column-task-container {
+    font-size: clamp(0.4rem, 4vw, 1rem);
+  }
 }
