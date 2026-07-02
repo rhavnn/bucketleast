@@ -1,17 +1,9 @@
-// import { useState } from 'react'
-import './NavBar.tsx';
-import NavBar from './NavBar.tsx';
-import ColumnWorkspace from './ColumnWorkspace.tsx';
-
-function Dashboard() {
+function NavBar() {
   return (
-    <main>
-      <NavBar></NavBar>
-      <section className="column-workspace">
-        <ColumnWorkspace></ColumnWorkspace>
-      </section>
-    </main>
+    <nav className="nav-bar">
+      <h1 id="logo">BucketLeast</h1>
+    </nav>
   )
 }
 
-export default Dashboard
+export default NavBar
