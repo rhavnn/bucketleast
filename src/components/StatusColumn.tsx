@@ -16,8 +16,8 @@ function StatusColumn({ columnName = 'Untitled', taskCount = 0 }: StatusColumnPr
       <button className="new-task-button" onClick={increaseTaskCount}>
         +
       </button>
-      <ul>
-        <li>Example</li>
+      <ul className="column-task-container">
+        <li className="column-task-child">Example</li>
       </ul>
     </div>
   )
