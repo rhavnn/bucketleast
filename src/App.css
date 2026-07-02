@@ -13,108 +13,89 @@
 }
 
 body {
-  background-color: var(--overgray);
+  background-color: var(--black);
+  background-image: linear-gradient(to bottom, var(--red), var(--black));
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .nav-bar {
   display: flex;
   background-color: var(--black);
+  margin: 0;
+  padding: 1rem;
 }
 .nav-bar #logo {
   margin-left: 2vw;
   font-size: var(--logo-size);
-  color: var(--undergray);
+  color: white;
 }
 
 ul {
-  list-style-type: none;
-  padding: 0 20px;
+  list-style: none;
+  padding: 20px;
   margin-top: 0;
 }
 
 /* Status Columns */
 
-/* Parent Workspace Container */
 .column-workspace {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
   padding: 2rem;
 }
 
-/* Status Columns using CSS Grid */
 .status-column {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto auto;
   grid-template-rows: auto auto;
   grid-template-areas:
-    'name counter'
-    'button button';
-  gap: 1rem;
+    'name counter button'
+    'container container container';
+  row-gap: 0;
   padding: 1.5rem;
-  background-color: var(--undergray);
-  color: var(--black);
+  background-color: var(--black);
+  color: white;
   border-radius: 8px;
   flex: 1 1 270px;
   align-items: center;
 }
-
 .status-column .column-name {
   grid-area: name;
   margin: 0;
+  text-align: left;
 }
-
 .status-column .column-task-count {
   grid-area: counter;
   margin: 0;
-  justify-self: end;
+  gap: 0;
 }
-
 .status-column .new-task-button {
   grid-area: button;
-  padding: 1rem;
+  margin: 0 0 0 8rem;
+  justify-self: right;
+  padding: 16px;
   border: none;
   border-radius: 8px;
   background-color: transparent;
-  width: 100%;
-  text-align: left;
   cursor: pointer;
+  color: white;
 }
-
-.status-column .new-task-button:hover {
-  background-color: var(--hovergray);
+.column-task-container {
+  grid-area: container;
+  margin: 0;
+  padding: 1rem 0 0 0;
 }
-
-.column-workspace {
-  display: grid;
-  grid-template-areas: 'name', 'counter', 'button', 'tasks';
-  gap: px;
-  padding: 2rem;
-}
-.status-column {
-  display: flex; /* Changed from inherit */
-  flex-direction: row; /* Aligns children horizontally */
-  flex-wrap: wrap; /* Allows children to wrap if needed */
-  align-items: center;
-  flex: 1 1 270px; /* Allows columns to grow and shrink properly */
-  background-color: var(--undergray);
-  color: var(--black);
-  border-radius: 8px;
-}
-
-.status-column .column-name {
-  margin: 20px 0 20px 20px;
-}
-.status-column .column-task-count {
-  margin: 0 1.5rem 0;
-}
-.status-column .new-task-button {
+.column-task-child {
+  text-align: left;
+  background-color: var(--overgray);
+  width: 16vh;
   padding: 1rem;
-  border: none;
+  margin: 0;
   border-radius: 8px;
-  background-color: transparent;
-  margin-left: 2rem;
 }
+
 .status-column .new-task-button:hover {
   background-color: var(--hovergray);
+  color: var(--black);
 }
