@@ -7,9 +7,7 @@ function Dashboard() {
   return (
     <main>
       <NavBar></NavBar>
-      <section className="column-workspace">
-        <ColumnWorkspace></ColumnWorkspace>
-      </section>
+      <ColumnWorkspace></ColumnWorkspace>
     </main>
   )
 }
